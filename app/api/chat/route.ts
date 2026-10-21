@@ -1,12 +1,12 @@
-@"
-    import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
 export async function POST(req: NextRequest) {
     try {
         const { text, image } = await req.json();
         const apiKey = process.env.GEMINI_API_KEY;
-        if (!apiKey) return NextResponse.json({ ans: "Render এ GEMINI_API_KEY পাওয়া যায়নি।" });
+        if (!apiKey) return NextResponse.json({ ans: "Render এ GEMINI_API_KEY পাওয়া যায়নি। Environment এ Add করো।" });
 
-        const prompt = `You are Poralekha AI. Answer directly and correctly in Bangla (use English term in bracket). User question: ${text}. If user asks formula, give formula directly. Example: formula of nitrogen is N2. Don't give study plan unless asked. Be short and helpful. If image is given, solve the question in the image.`;
+        const prompt = `You are Poralekha AI. Answer directly and correctly in Bangla. User question: ${text}. If user asks formula, give formula directly. Example: formula of nitrogen is N2. Don't give study plan unless asked. Be short and helpful. If image is given, solve the question in the image.`;
 
         let parts: any[] = [{ text: prompt }];
         if (image && image.includes(",")) {
@@ -26,4 +26,3 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ans: "Error: " + e.message });
     }
 }
-"@ | Set-Content -Path app\api\chat\route.ts -Encoding utf8
