@@ -11,10 +11,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: "Poralekha AI - Your AI Study Buddy",
-  description: "Poralekha AI - Personal AI Study Buddy for Bangladeshi students. YUNet AIgnite 2026",
+  description: "Poralekha AI - Personal AI Study Buddy for Bangladeshi students. YuNet AIgnite 2025",
+  verification: {
+    google: "JoiISZmCOVFCyypuiB6kuPNe3l8nLFAk_QpjzVBTwvw",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
